@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  api:
+    container_name: api_rest
+    restart: always
+    build: .
+    ports:
+      - "5000:3000"
+    links: 
+      - mongo
+    volumes:
+      - .:/usr/src/api
+
+  mongo:
+    container_name: mymongodb
+    image: mongo
+    ports: 
+      - "27017:27017"
+
