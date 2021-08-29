@@ -1,16 +1,22 @@
 var express = require('express');
-const Place = require('../models/Place');
-
 
 let router = express.Router();
 
+
+const placesController = require('../controllers/PlacesController')
+
 router.route('/')
-.get()
-.post()
+.get(placesController.index)
+.post(
+    placesController.multerMiddleware(), 
+    placesController.create,
+    placesController.saveImage)
+
+
 
 router.route('/:id')
-.get()
-.put()
-.delete()
+.get(placesController.find, placesController.show)
+.put(placesController.find, placesController.update)
+.delete(placesController.find, placesController.destroy)
   
 module.exports = router;

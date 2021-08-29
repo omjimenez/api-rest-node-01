@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 const places = require('./routes/places');
+const registrarpeso = require('./routes/registrarpeso');
 
 const db = require('./config/database');
 
@@ -19,6 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/places', places)
+
+// Registro Peso
+app.use('/RegistrarPeso', registrarpeso)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

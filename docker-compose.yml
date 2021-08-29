@@ -6,7 +6,7 @@ services:
     restart: always
     build: .
     ports:
-      - "5000:3000"
+      - "4443:443"
     links: 
       - mongo
     volumes:
