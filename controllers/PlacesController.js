@@ -6,8 +6,8 @@ const uploader = require('../models/Uploader');
 // Implementar una funcion Middleware
 function find(req, res, next){
   Place.findById(req.params.id)
-    .then( places => {
-      req.place = places;
+    .then( place => {
+      req.place = place;
       next();
     } )
     .catch( err =>{
@@ -35,7 +35,7 @@ function create(req, res, next){
         openHour: req.body.openHour,
         closeHour: req.body.closeHour
       }).then( doc =>{
-        // res.json(doc)
+         res.json(doc)
         req.place = doc;
         next();
       }).catch(err => {
